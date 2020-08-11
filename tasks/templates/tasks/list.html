@@ -1,0 +1,25 @@
+<h3>TO DO</h3>
+
+<form method="POST" actions='/'>
+    {%csrf_token%} <!-- to be authorized-->
+    {{form.title}}
+    <input type="submit" name="Create Task" > <!--place holder tag doesnt work b/c not typical html input-->
+</form>
+
+
+
+{% for task in tasks %} <!-- template engine sys, syntax based on jinja-->
+    <div>
+        {%if task.complete == True %} 
+        <strike>{{task}}</strike>
+        {%else%}
+        <span>{{task}}</span>
+        {%endif%}
+        <br>
+
+        <input type="checkbox" name="complete_task" id="complete_task">
+        <a href="{%url 'update_task' task.id%}">update</a>
+        <a href="{%url 'delete_task' task.id%}">delete</a>
+    </div>
+{% endfor %}
+
