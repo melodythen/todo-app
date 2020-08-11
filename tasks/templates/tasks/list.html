@@ -16,10 +16,9 @@
         <span>{{task}}</span>
         {%endif%}
         <br>
-
-        <input type="checkbox" name="complete_task" id="complete_task">
+        
+        <a href="{%url 'complete_task' task.id%}">complete</a>
         <a href="{%url 'update_task' task.id%}">update</a>
         <a href="{%url 'delete_task' task.id%}">delete</a>
     </div>
 {% endfor %}
-
